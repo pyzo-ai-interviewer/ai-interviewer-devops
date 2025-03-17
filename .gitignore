@@ -2,3 +2,4 @@
 **/env.tmp
 deploy.log
 scripts/webhook/hooks.json
+*.log

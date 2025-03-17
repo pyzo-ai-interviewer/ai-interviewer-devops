@@ -1,0 +1,4 @@
+services:
+  ai_interviewer_landingpage:
+    image: ghcr.io/${org}/ai-interviewer-landingpage:${AI_INTERVIEWER_LANDINGPAGE_IMAGE_TAG:-${DEFAULT_IMAGE_TAG:?DEFAULT_IMAGE_TAG is not set}}
+    restart: always

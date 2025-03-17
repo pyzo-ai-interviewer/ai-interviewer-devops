@@ -1,0 +1,4 @@
+include:
+  - ./ai_interviewer_backend/docker-compose.yaml
+  # - ./ai_interviewer_dashboard/docker-compose.yaml
+  - ./ai_interviewer_landingpage/docker-compose.yaml
