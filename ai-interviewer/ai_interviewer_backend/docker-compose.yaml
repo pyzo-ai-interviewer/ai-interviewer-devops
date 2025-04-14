@@ -27,7 +27,7 @@ services:
       ENVIRONMENT: ${LLM_ENVIRONMENT:?LLM_ENVIRONMENT is not set}
       HUGGING_FACE_TOKEN: ${HUGGING_FACE_TOKEN:?HUGGING_FACE_TOKEN is not set}
       ISB_JOB_ID: ${ISB_JOB_ID:?ISB_JOB_ID is not set}
-      DB_NAME: ${DB_NAME:?DB_NAME is not set}
+      DB_NAME: ${POSTGRES_DB:?POSTGRES_DB is not set}
       DB_USER: ${POSTGRES_USER:?POSTGRES_USER is not set}
       DB_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is not set}
       DB_HOST: ${DB_HOST:?DB_HOST is not set}
@@ -68,7 +68,7 @@ services:
       ENVIRONMENT: ${LLM_ENVIRONMENT:?LLM_ENVIRONMENT is not set}
       HUGGING_FACE_TOKEN: ${HUGGING_FACE_TOKEN:?HUGGING_FACE_TOKEN is not set}
       ISB_JOB_ID: ${ISB_JOB_ID:?ISB_JOB_ID is not set}
-      DB_NAME: ${DB_NAME:?DB_NAME is not set}
+      DB_NAME: ${POSTGRES_DB:?POSTGRES_DB is not set}
       DB_USER: ${POSTGRES_USER:?POSTGRES_USER is not set}
       DB_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is not set}
       DB_HOST: ${DB_HOST:?DB_HOST is not set}

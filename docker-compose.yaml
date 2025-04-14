@@ -1,6 +1,6 @@
 include:
-#  - ./common/monitoring/docker-compose.yaml
-#  - ./common/minio/docker-compose.yaml
+ - ./common/monitoring/docker-compose.yaml
+ - ./common/minio/docker-compose.yaml
 #  - ./common/environment/docker-compose.yaml
 #  - ./common/uptime/docker-compose.yaml
 #  - ./common/clickhouse/docker-compose.yaml
@@ -9,7 +9,6 @@ include:
 #  - ./common/registry/docker-compose.yaml
 #  - ./common/rabbitmq/docker-compose.yaml
 #  - ./common/kong/docker-compose.yaml
-#  - ./common/pgweb/docker-compose.yaml
 #  - ./common/hasura/docker-compose.yaml
  - ./ai-interviewer/docker-compose.yaml
 
