@@ -153,7 +153,7 @@ expose_service() {
   local service_port=$2
 
   # Validate the input format
-  if ! [[ "$service_name" =~ ^(common|pyzo)/[^/]+$ ]]; then
+  if ! [[ "$service_name" =~ ^(common|ai-interviewer)/[^/]+$ ]]; then
     echo "$OUTPUT_INVALID_INPUT"
     return
   fi
@@ -188,7 +188,7 @@ onboard_service() {
   while true; do
     read -p "$PROMPT_FOLDER_NAME" FOLDER_INPUT
 
-    if [[ "$FOLDER_INPUT" =~ ^(common|pyzo)/[^/]+$ ]]; then
+    if [[ "$FOLDER_INPUT" =~ ^(common|ai-interviewer)/[^/]+$ ]]; then
       local folder=$(dirname "$FOLDER_INPUT")
       local SERVICE_NAME=$(basename "$FOLDER_INPUT")
       local output_dir="$folder/$SERVICE_NAME"

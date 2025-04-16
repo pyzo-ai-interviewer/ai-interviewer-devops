@@ -74,6 +74,6 @@ else
     echo "User $VAULT_USERNAME already exists."
 fi
 
-/pyzo/consul-init.sh &
+/ai-interviewer/consul-init.sh &
 
 fg %1

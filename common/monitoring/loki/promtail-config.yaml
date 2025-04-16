@@ -16,7 +16,7 @@ scrape_configs:
       - localhost
     labels:
       job: containerlogs
-      __path__: /var/lib/docker/containers/*/*log
+      __path__: var/lib/docker/containers/*/*log
 
   pipeline_stages:
   - json:
@@ -31,7 +31,7 @@ scrape_configs:
         # swarm_service_name: attrs."com.docker.swarm.service.name"
         # swarm_task_name: attrs."com.docker.swarm.task.name"
   - regex:
-      expression: "^/var/lib/docker/containers/(?P<container_id>.{12}).+/.+-json.log$"
+      expression: "^var/lib/docker/containers/(?P<container_id>.{12}).+/.+-json.log$"
       source: filename
   - timestamp:
       format: RFC3339Nano

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-pushd /pyzo
+pushd /ai-interviewer
 
 export VAULT_ADDR="http://127.0.0.1:8200"
 
@@ -29,4 +29,4 @@ fi
 consul-template \
     -vault-default-lease-duration=10s \
     -vault-renew-token=false  \
-    -template "env.tpl:env.tmp:bash -c 'cat /pyzo/env.tmp > /pyzo/.env; echo .env updated '"
+    -template "env.tpl:env.tmp:bash -c 'cat /ai-interviewer/env.tmp > /ai-interviewer/.env; echo .env updated '"
