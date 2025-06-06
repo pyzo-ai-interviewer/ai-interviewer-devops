@@ -45,9 +45,19 @@ jobs:
           fi     
           
           encoded_services=$(python3 -c "from urllib.parse import quote; print(quote('${{ github.event.inputs.services }}'))")
-          curl -X POST \
-            --fail-with-body -sS --no-buffer\
+
+          echo "Calling webhook..."
+          response=$(curl -sS --fail-with-body \
             -H "Content-Type: application/json" \
-            -d '{"secret_token": "${{ secrets[format('{0}_WEBHOOK_PASSWORD',env.ENV)] }}", "ENABLE_FORCE_RECREATE":${{ env.ENABLE_FORCE_RECREATE }}, "DISABLE_REMOVE_ORPHANS":${{ env.DISABLE_REMOVE_ORPHANS }}, "DISABLE_ANSI":${{ env.DISABLE_ANSI }} ,"ENABLE_GIT_PULL":${{ env.ENABLE_GIT_PULL }}}' \
-            "${{ secrets[format('{0}_WEBHOOK_URL',env.ENV)] }}/hooks/deploy?services=$encoded_services"
+            -d '{"secret_token": "${{ secrets[format('{0}_WEBHOOK_PASSWORD', env.ENV)] }}", "ENABLE_FORCE_RECREATE":${{ env.ENABLE_FORCE_RECREATE }}, "DISABLE_REMOVE_ORPHANS":${{ env.DISABLE_REMOVE_ORPHANS }}, "DISABLE_ANSI":${{ env.DISABLE_ANSI }} ,"ENABLE_GIT_PULL":${{ env.ENABLE_GIT_PULL }}}' \
+            "${{ secrets[format('{0}_WEBHOOK_URL', env.ENV)] }}/hooks/deploy?services=$encoded_services")
+
+          echo "Webhook response: $response"
+
+          status=$(echo "$response" | jq -r '.status // empty')
+
+          if [ "$status" = "skipped" ]; then
+            echo "::error::Webhook trigger skipped (possibly due to token mismatch)"
+            exit 1
+          fi
     
